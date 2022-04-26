@@ -16,13 +16,17 @@ async def main():
             break;
         print("========================")
         legal_moves = list(board.legal_moves)
+        a = random.choice(legal_moves)
         b = input("Lütfen bir hamle seçin: ")
-        while True:
-            try:
-                board.push_san(b)
-                break;
-            except:
-                b = input("Lütfen hamleyi doğru seçin: ")
+        if(b == "R"):
+            board.push(a)
+        else:
+            while True:
+                try:
+                    board.push_san(b)
+                    break;
+                except:
+                    b = input("Lütfen hamleyi doğru seçin: ")
         print("========================")
         board = chess.Board(board.fen())
         if board.is_checkmate():
