@@ -10,13 +10,15 @@ async def main():
         await asyncio.sleep(2)
         board.push(a)
         print(board)
+        print("========================")
+        print("Hamlem:", a)
         board = chess.Board(board.fen())
         if board.is_checkmate():
             print("OYUN BİTTİ!")
             break;
         print("========================")
         legal_moves = list(board.legal_moves)
-        a = random.choice(legal_moves)
+        a1 = random.choice(legal_moves)
         b = input("Lütfen bir hamle seçin: ")
         while True:
             try:
@@ -24,7 +26,8 @@ async def main():
                 break;
             except:
                 if(b=="R"):
-                    board.push(a)
+                    board.push(a1)
+                    print("Rastgele yaptığım hamle:",a1)
                     break;
                 b = input("Lütfen hamleyi doğru seçin: ")
         print("========================")
